@@ -1,1 +1,6 @@
-# kdt01_html
+# K-digital 2기 (2025)
+## HTML
+---
+## CSS
+---
+## JS
