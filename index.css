@@ -22,6 +22,10 @@ header {
     font-size: 30px;
 }
 
+main {
+    height: 70vh;
+}
+
 main ol {
     width: 80%;
     margin-left: 10%;
@@ -30,6 +34,7 @@ main ol {
 
 main li {
     border: 1px dotted red;
+    ;
     padding: 5px;
     margin: 5px;
 }
@@ -76,9 +81,10 @@ footer a:visited {
 }
 
 footer a:hover {
-    color: grey;
+    background-color: grey;
 }
 
 footer a:active {
-    color: red;
+    background-color: white;
+    color: black;
 }

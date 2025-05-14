@@ -12,6 +12,10 @@ header {
   justify-content: center;
 }
 
+main {
+  height: 70vh;
+}
+
 main a {
   text-decoration: none;
 }
