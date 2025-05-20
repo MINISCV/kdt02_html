@@ -1,0 +1,51 @@
+.nlist,
+.brArea {
+    width: 80%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nlist {
+    height: 80px;
+}
+
+.nlist>span {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    margin: 5px;
+}
+
+.sp0 {
+    background-color: brown;
+}
+
+.sp1 {
+    background-color: coral;
+}
+
+.sp2 {
+    background-color: darkgreen;
+}
+
+.sp3 {
+    background-color: darkblue;
+}
+
+.sp4 {
+    background-color: blueviolet;
+}
+
+#spPlus {
+    color: black;
+}

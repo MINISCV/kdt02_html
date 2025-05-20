@@ -13,27 +13,20 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="../index.css">
     <link rel="stylesheet" type="text/css" href="../js.css">
-    <link rel="stylesheet" type="text/css" href="./04.css">
-    <script src="./04.js"></script>
+    <link rel="stylesheet" type="text/css" href="./05.css">
+    <script src="./05.js"></script>
 </head>
 
 <body>
     <header>
-        <h1>K-digital 2기 JavaScript 문자열</h1>
+        <h1>K-digital 2기 JavaScript 배열(로?또)</h1>
     </header>
     <main>
-        <form>
-            <div class="fInput">
-                <input type="text" name="txt1" id="txt1" placeholder="문자열을 입력하세요" />
-                <input type="text" name="txt2" id="txt2" readonly />
-            </div>
-            <div class="fButton">
-                <button onclick="check1(event)">회문확인</button>
-                <button onclick="check2(event)">숫자합계</button>
-                <button onclick="check3(event)">취소</button>
-                <!-- <button type="reset">취소</button> -->
-            </div>
-        </form>
+        <div class="nlist" id="nlist">
+        </div>
+        <div class="btArea">
+            <button onclick="lotto()">로또번호 생성기</button>
+        </div>
     </main>
     <footer>
         <ul>
