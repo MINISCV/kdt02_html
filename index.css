@@ -2,7 +2,7 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: "Hi Melody", system-ui;
+    font-family: "Nanum Gothic Coding", system-ui;
 }
 
 header,
@@ -19,7 +19,7 @@ footer {
 header {
     display: flex;
     justify-content: center;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 main {
@@ -34,7 +34,6 @@ main ol {
 
 main li {
     border: 1px dotted red;
-    ;
     padding: 5px;
     margin: 5px;
 }

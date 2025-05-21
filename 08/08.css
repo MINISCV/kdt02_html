@@ -1,0 +1,28 @@
+form {
+    width: 80%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px dotted black;
+}
+
+.mdiv {
+    width: 45%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+}
+
+.mdiv>input,
+.mdiv>select {
+    width: 80%;
+    height: 40px;
+    padding-left: 10px;
+}
+
+[readonly] {
+    background-color: beige;
+}

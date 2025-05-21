@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const bts = document.querySelectorAll(".mdiv button");
     const msg = document.querySelector("#msg");
     for (let [idx, bt] of bts.entries()) {
-        bt.addEventListener('click', () => {
+        bt.addEventListener('click', (e) => {
+            e.preventDefault();
             const num = Math.floor((Math.random() * 6)) + 1;
             imgs[0].setAttribute('src', `../img/${num}.png`);
             imgs[0].setAttribute('alt', `${num}`);
