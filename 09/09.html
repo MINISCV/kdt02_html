@@ -13,37 +13,25 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="../index.css">
     <link rel="stylesheet" type="text/css" href="../js.css">
-    <link rel="stylesheet" type="text/css" href="./08.css">
-    <script src="./08.js"></script>
+    <link rel="stylesheet" type="text/css" href="./09.css">
+    <script src="./09.js"></script>
 </head>
 
 <body>
     <header>
-        <h1>K-digital 2기 JavaScript 단위변환</h1>
+        <h1>K-digital 2기 JavaScript 업다운 게임</h1>
     </header>
     <main>
-        <form>
-            <div class="mdiv">
-                <select name="sel1" id="sel1">
-                    <option value="℃" selected>섭씨온도</option>
-                    <option value="℉">화씨온도</option>
-                </select>
-                </div>
-                <div class="mdiv">
-                <select name="sel2" id="sel2">
-                    <option value="℃">섭씨온도</option>
-                    <option value="℉" selected>화씨온도</option>
-                </select>
-            </div>
-            <div class="mdiv">
-                <input type="number" name="txt1" id="txt1">
-                <label for="txt1">℃</label>
-            </div>
-            <div class="mdiv">
-                <input type="number" name="txt2" id="txt2" readonly>
-                <label for="txt2">℉</label>
-            </div>
-        </form>
+        <div class="mdiv">
+            <img src="../img/what.png" alt="What?">
+        </div>
+        <div class="mdiv" id="inputArea">
+            <input type="number" min="1" max="100" placeholder="숫자를 입력하세요">
+            <button>확인</button>
+        </div>
+        <div class="mdiv" id="btArea">
+            <button>숫자를 생성해 주세요</button>
+        </div>
     </main>
     <footer>
         <ul>

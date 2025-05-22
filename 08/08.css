@@ -26,3 +26,15 @@ form {
 [readonly] {
     background-color: beige;
 }
+
+label {
+    font-weight: bold;
+}
+
+[for='txt1'] {
+    color: red;
+}
+
+[for='txt2'] {
+    color: green;
+}

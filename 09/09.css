@@ -1,0 +1,14 @@
+.mdiv {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 40px;
+}
+
+.mdiv>input {
+    width: 60%;
+    height: 40px;
+    padding-left: 10px;
+    margin-right: 10px;
+}
