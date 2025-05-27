@@ -1,0 +1,32 @@
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.row .col {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    font-size: 50px;
+}
+
+img { 
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.result { 
+    font-size: large;
+    font-weight: bold;
+    height: 10px;
+}
+
+button {
+    margin: 10px;
+}
