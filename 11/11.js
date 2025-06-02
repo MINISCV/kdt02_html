@@ -1,4 +1,5 @@
-const posterCache = {};
+const posterCacheKey = "moviePosterCache";
+let posterCache = JSON.parse(sessionStorage.getItem(posterCacheKey)) || {};
 
 const getDate = () => {
     const yesterday = new Date();
@@ -14,18 +15,19 @@ const getPoster = (movieName) => {
         const poster = document.querySelector(".poster");
         poster.innerHTML = `<img src="${posterCache[movieName]}" alt="${movieName} 포스터" class="posterImg">`;
         return;
-    }
+    }        
     const apiKey = "b42483d9af611184a5e87b9980e11075";
     let url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${movieName}`;
     fetch(url)
         .then(resp => resp.json())
         .then(data => {
             let posterPath = "https://image.tmdb.org/t/p/w500";
-            if(data.results[0].poster_path === null) 
+            if (data.results[0].poster_path === null)
                 posterPath += data.results[0].backdrop_path;
             else
                 posterPath += data.results[0].poster_path;
             posterCache[movieName] = posterPath;
+            sessionStorage.setItem(posterCacheKey, JSON.stringify(posterCache));
             const poster = document.querySelector(".poster");
             poster.innerHTML = `<img src="${posterPath}" alt="${movieName} 포스터" class="posterImg">`;
         })
@@ -45,13 +47,14 @@ const getMovieData = (date, ul) => {
         .then(resp => resp.json())
         .then(data => {
             const dailyBoxOfficeList = data.boxOfficeResult.dailyBoxOfficeList;
-            const mvList = dailyBoxOfficeList.map((item) => `<li onmouseover="getPoster('${item.movieNm}')">
+            const mvList = dailyBoxOfficeList.map((item) => 
+                 `<li onmouseover="getPoster('${item.movieNm.replace(/'/g, "\\'")}')">
         <span class="spRank">${item.rank}</span> 
         <span class="spMv">${item.movieNm}</span>
         <span class="spInten">${item.rankInten == "0" ? "" : Math.abs(parseInt(item.rankInten))}
             ${parseInt(item.rankInten) > 0 ? '<i class="fa-solid fa-arrow-up"></i>'
-                    : parseInt(item.rankInten) < 0 ? '<i class="fa-solid fa-arrow-down"></i>'
-                        : '<i class="fa-solid fa-minus"></i>'}</span>
+                        : parseInt(item.rankInten) < 0 ? '<i class="fa-solid fa-arrow-down"></i>'
+                            : '<i class="fa-solid fa-minus"></i>'}</span>
         
         </li>`);
             ul.innerHTML = mvList.join('');
