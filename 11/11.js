@@ -7,11 +7,23 @@ const getDate = () => {
     return yesterday.toISOString().slice(0, 10);
 }
 
+const getPoster = (movieName) => {
+    const apiKey = "";
+    let url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${movieName}`;
+    fetch(url)
+        .then(resp => resp.json())
+        .then(data => {
+            const posterPath = "https://image.tmdb.org/t/p/w500" + data.results[0].poster_path;
+            const poster = document.querySelector(".poster");
+            poster.innerHTML = `<img src="${posterPath}" alt="${movieName} 포스터" class="posterImg">`;
+        })
+        .catch(err => console.log(err));
+}
+
 const getMovieData = (date, ul) => {
     const apiKey = "";
     let url = `https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${apiKey}&targetDt=${date.value.replaceAll("-", "")}&itemPerPage=10`;
     const movieType = document.querySelector("input[type=radio]:checked");
-    console.log(movieType.id);
     if (movieType.id === 'commercial') {
         url += "&multiMovieYn=N";
     } else if (movieType.id === 'multi') {
@@ -21,7 +33,7 @@ const getMovieData = (date, ul) => {
         .then(resp => resp.json())
         .then(data => {
             const dailyBoxOfficeList = data.boxOfficeResult.dailyBoxOfficeList;
-            const mvList = dailyBoxOfficeList.map((item) => `<li>
+            const mvList = dailyBoxOfficeList.map((item) => `<li onmouseover="getPoster('${item.movieNm}')">
         <span class="spRank">${item.rank}</span> 
         <span class="spMv">${item.movieNm}</span>
         <span class="spInten">${item.rankInten == "0" ? "" : Math.abs(parseInt(item.rankInten))}
@@ -31,13 +43,14 @@ const getMovieData = (date, ul) => {
         
         </li>`);
             ul.innerHTML = mvList.join('');
+            getPoster(dailyBoxOfficeList[0].movieNm);
         })
         .catch(err => console.log(err));
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const date = document.querySelector("input");
-    const ul = document.querySelector("main > ul");
+    const date = document.querySelector("input[type=date]");
+    const ul = document.querySelector(".mvul");
     const movieType = document.querySelectorAll("input[type=radio]");
 
     date.value = getDate();
