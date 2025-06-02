@@ -1,3 +1,5 @@
+const posterCache = {};
+
 const getDate = () => {
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
@@ -8,12 +10,22 @@ const getDate = () => {
 }
 
 const getPoster = (movieName) => {
-    const apiKey = "";
+    if (posterCache[movieName]) {
+        const poster = document.querySelector(".poster");
+        poster.innerHTML = `<img src="${posterCache[movieName]}" alt="${movieName} 포스터" class="posterImg">`;
+        return;
+    }
+    const apiKey = "b42483d9af611184a5e87b9980e11075";
     let url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${movieName}`;
     fetch(url)
         .then(resp => resp.json())
         .then(data => {
-            const posterPath = "https://image.tmdb.org/t/p/w500" + data.results[0].poster_path;
+            let posterPath = "https://image.tmdb.org/t/p/w500";
+            if(data.results[0].poster_path === null) 
+                posterPath += data.results[0].backdrop_path;
+            else
+                posterPath += data.results[0].poster_path;
+            posterCache[movieName] = posterPath;
             const poster = document.querySelector(".poster");
             poster.innerHTML = `<img src="${posterPath}" alt="${movieName} 포스터" class="posterImg">`;
         })
@@ -21,7 +33,7 @@ const getPoster = (movieName) => {
 }
 
 const getMovieData = (date, ul) => {
-    const apiKey = "";
+    const apiKey = "6a297044a9c708817d3e785f3308ca25";
     let url = `https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${apiKey}&targetDt=${date.value.replaceAll("-", "")}&itemPerPage=10`;
     const movieType = document.querySelector("input[type=radio]:checked");
     if (movieType.id === 'commercial') {
